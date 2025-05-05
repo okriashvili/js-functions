@@ -115,7 +115,7 @@ var arry = [12, 4341, 15, 98, 30, 145, 69, 9, 8];
 // forEach კი ახალ მასივად არ გარდაიქმნება 
 var arry = [12, 4341, 15, 98, 30, 145, 69, 9, 8];
 var doubleArry = arry.map(function double(first, second) {
-    console.log(first, second);
+    console.log(second, first);
 });
 console.log("hello world");
 
@@ -131,8 +131,8 @@ var tripleArry = doubleArry.map(function triple(first, second2) {
 // reduce და reduceRigth მეთოდი - მასივებს აკლებს/ ამატებს თანმიმდევრობით რ თანმიმდევრობასაც გავუწერთ
 // 
 var numbers = [1000, 343, 57];
-var results = numbers.reduceRight(function(left, right){
-    return left - right;
+var results = numbers.reduce(function(left, right){
+    return left + right;
 
 });
 console.log(results)
@@ -156,23 +156,86 @@ console.log(masivi);
 
 
 // sort მეთოდი, კლებადობით ან მეტობით ან გაწერილი პირობის მიხედვით ალაგებს მასივებს
+// ცვლადის სახელს ვუწერთ .sort მეთოდს, შემდეგ ვწერთ პირობას თუკი როგორ გვინდა რომ დაალაგდეს იგი
+// თუ გვინდა რომ ზრდადობით დავალაგოთ ფუნქციაში უნდა გავუწეროთ ორი არგუმენტი მაგ: a,b
+// თუ a - b, a-ს გამოვაკლებთ b-ს იგი დაგალდება ზრდდობით
+// ხოლო თუ პირიქით გამოვაკლებთ იგი დალაგდება კლებაოდბით
 var num = [12, 4341, 15, 98, 30, 145, 69, 9, 8];
-
 var sortireba = num.sort(function(a, b){
-
-return a-b;
-
+return a - b;
 });
 console.log(sortireba);
 
 
 
+// ვამოწმებთ არის თუ არა ყველა რიცხი მასივში ლუწი
+function ricxvebiLuwia(ricxvebi) {
+    return ricxvebi.every(function(even) {
+        return even % 2 === 0;
+    });
+}
+let ricxvebi = [2, 34, 56, 68, 78, 32, 54, 9];
+console.log(ricxvebiLuwia(ricxvebi));
+
+console.log("kai ra");
+
+function areAllEven(numbers) {
+    return numbers.every(function(num) {
+        return num % 2 === 0;
+    });
+}
+let numbers = [2, 4, 6, 8];
+console.log(areAllEven(numbers));
+
+// sort მეთოდი
+var rigitoba = [2, 4, 12, 6, 8, 23, 43, 5, 1, 90]; 
+rigitoba.sort(function(st, nd) {
+    return st - nd;
+});
+console.log(rigitoba);
+
+
+// entries მეთოდი იტერაცია მასივში
+// entries მეთოდს მოაქვს მასივების რიგითობა და მათი მნიშნვნელობა - ისევე მუშობს როგორც map და foreach მაგრამ ორი მნიშნვნელობა არ ჭირდება  
+var rigitoba = [2, 4, 12, 6, 8, 23, 43, 5, 1, 90]; 
+for(var nums of rigitoba.entries())
+console.log(nums);
+
+// .wtih ელემენტს უცვლის სახელს, გადაეცემა ორი მნიშვნელობა, პირველი ელემენტის რიგითი ნომერი რომელი ელემენტიც გვინდა ჩანაცვლდეს
+// და მეორე მნიშვნელბა კი რითიც გვინდა რომ ჩანაცვლდეს 
+// მასგავდ მოქმედებს როგორც .replace მაგრამ replace ემუშავენა მხოლოდ სტრინგებს და არა მასივებს
+var names = ["giorgi", "nika", "makho", "lasha", "barka"]
+names = names.with(4, "barkala")
+console.log(names);
+
+// replace ემუშავება მხოლოდ სტრინგებს 
+var saxeli = "toro"
+axali = saxeli.replace("toro", "nakho")
+console.log(axali);
+
+
+// საკლასო დავალება 1: filter მეთოდიით წამოიღეთ ის რიცხვეი რომლებიც 20ზე ნაკლებია
+var g = [12, 32, 1, 45, 6, 3, 21];
+var result = g.filter(function(x) {
+    return x > 20;
+});
+console.log(result);
 
 
 
+// საკლასო დავალება 2: reduce 
+var n = [100, 20, 70];
+var sxvaoba = n.reduce(function(st, nd){
+    return st - nd
+});
+console.log(sxvaoba);
 
-
-
+// საკლასო დავალება 3: კლებადობით დალაგება
+var rigitoba = [2, 4, 12, 6, 8, 23, 43, 5, 1, 90]; 
+rigitoba.sort(function(one,two){
+    return one - two;
+});
+console.log(rigitoba);
 
 
 
